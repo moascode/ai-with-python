@@ -1,0 +1,14 @@
+https://packaging.python.org/en/latest/tutorials/packaging-projects/
+
+cd binomial_package_files
+python setup.py sdist
+py -m pip install --upgrade twine
+
+# upload & install in test-pypi
+py -m twine upload --repository testpypi dist/*
+py -m pip install --index-url https://test.pypi.org/simple/ --no-deps moascode-probability
+
+# upload & install in pypi
+py -m twine upload dist/*
+pip install moascode-probability
+
